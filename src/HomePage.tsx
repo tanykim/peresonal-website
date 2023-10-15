@@ -5,6 +5,7 @@ import { projects } from "./projects";
 import ProjectCard from "./components/ProjectCard";
 import ProjectTypeLabel from "./components/ProjectTypeLabel";
 import DataTypeLabel from "./components/DataTypeLabel";
+import { Link } from "react-router-dom";
 
 export const projectTypes: { id: ProjectType; label: string }[] = [
   { id: "vis", label: "Data visualization" },
@@ -21,17 +22,21 @@ export const dataTypes: { id: DataType; icon: string; label: string }[] = [
   { id: "other", icon: "pet_supplies", label: "Other" },
 ];
 
-function getMonth() {
+function getYear(): number {
+  const date = new Date();
+  return date.getFullYear();
+}
+
+function getMonth(): string {
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
-  const year = date.getFullYear();
-  return `${month} ${year}`;
+  return `${month} ${getYear()}`;
 }
 
 export default function Home() {
   return (
-    <Box margin="0 auto" maxWidth="6xl" p={4}>
-      <Flex direction="column" gap={24}>
+    <Box margin="0 auto" maxWidth="6xl" px={[2, 4]} py={[4, 4, 8, 16]}>
+      <Flex direction="column" gap={16}>
         <Box>
           <Heading as="h1" size="2xl" mb={4}>
             Tanyoung Kim
@@ -41,37 +46,55 @@ export default function Home() {
           </Heading>
         </Box>
         <Box>
-          <Flex wrap="wrap" gap={2} mb={2}>
+          <Flex gap={2} mb={2}>
             <Text mr={2} color="secondary">
               Skills
             </Text>
-            <Text color="gray.200" mr={2}>
-              |
-            </Text>
-            {projectTypes.map((type, i) => (
-              <ProjectTypeLabel key={i} {...type} mr={2} />
-            ))}
+            <Flex wrap="wrap" gap={2}>
+              {projectTypes.map((type, i) => (
+                <ProjectTypeLabel key={i} {...type} mr={2} />
+              ))}
+            </Flex>
           </Flex>
-          <Flex wrap="wrap" gap={2}>
+          <Flex gap={2}>
             <Text mr={2} color="secondary">
               Data
             </Text>
-            <Text color="gray.200" mr={2}>
-              |
-            </Text>
-            {dataTypes.map((type, j) => (
-              <DataTypeLabel key={type.id} {...type} mr={2} />
-            ))}
+            <Flex wrap="wrap" gap={2}>
+              {dataTypes.map((type, j) => (
+                <DataTypeLabel key={type.id} {...type} mr={2} />
+              ))}
+            </Flex>
           </Flex>
         </Box>
-        <Flex gap={16} wrap="wrap">
+        <Flex gap={12} wrap="wrap">
           {projects
             .filter((project) => !project.isPrivate)
             .map((project) => (
               <ProjectCard key={project.id} {...project} />
             ))}
         </Flex>
-        <Text color="secondary">Last updated in {getMonth()}</Text>
+        <Box color="secondary">
+          <Flex wrap="wrap" gap={4} mb={4}>
+            <Link to="/about-me">
+              <Text variant="link">About me</Text>
+            </Link>
+            <Link to="https://www.linkedin.com/in/tanykim" target="_blank">
+              <Text variant="link">LinkedIn</Text>
+            </Link>
+            <Link to="https://github.com/tanykim" target="_blank">
+              <Text variant="link">Github</Text>
+            </Link>
+            <Link to="https://medium.com/@tanykim" target="_blank">
+              <Text variant="link">Medium</Text>
+            </Link>
+          </Flex>
+          <Text>Last updated in {getMonth()}</Text>
+          <Text>
+            Copyright © 2023{getYear() > 2023 ? ` - ${getYear()}` : ""} by
+            Tanyoung Kim
+          </Text>
+        </Box>
       </Flex>
     </Box>
   );

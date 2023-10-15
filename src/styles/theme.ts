@@ -20,17 +20,39 @@ const buttonTheme = defineStyleConfig({
   variants: { project: projectButton },
 });
 
+const linkText = defineStyle({
+  textDecoration: "underline",
+  color: "gray.700",
+  _hover: {
+    color: "black",
+  },
+});
+
+const textTheme = defineStyleConfig({
+  variants: { link: linkText },
+});
+
 export const theme = extendTheme({
   fonts: {
-    heading: "'Gabarito', -apple-system, 'Helvetica Neue', serif",
-    body: "'Gabarito', -apple-system, 'Helvetica Neue', serif",
+    heading: "'Mukta', -apple-system, 'Helvetica Neue', serif",
+    body: "'Mukta', -apple-system, 'Helvetica Neue', serif",
   },
   styles: {
     global: {
       h1: {
         color: "gray.700",
-        letterSpacing: "0.1em",
+        letterSpacing: "0.025em",
         fontWeight: 600,
+      },
+      ".markdown": {
+        p: {
+          fontSize: "lg",
+          lineHeight: "tall",
+          marginBottom: "1em",
+        },
+        a: {
+          textDecoration: "underline",
+        },
       },
     },
   },
@@ -46,5 +68,6 @@ export const theme = extendTheme({
   },
   components: {
     Button: buttonTheme,
+    Text: textTheme,
   },
 });

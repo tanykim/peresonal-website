@@ -1,28 +1,38 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { projects } from "./projects";
-import { DataType, Project, ProjectType } from "./utils/types";
+import { DataType, ProjectType } from "./utils/types";
 import {
   Box,
   Text,
-  Heading,
-  Icon,
-  IconButton,
   Flex,
   Button,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-import { MdArrowBack, MdOpenInNew } from "react-icons/md";
+import { MdOpenInNew, MdPlayCircle } from "react-icons/md";
 import DataTypeLabel from "./components/DataTypeLabel";
 import { dataTypes, projectTypes } from "./HomePage";
 import ProjectTypeLabel from "./components/ProjectTypeLabel";
+import Header from "./components/Header";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import ProjectNav from "./components/ProjectNav";
 
 export default function ProjectPage() {
   const { projectId } = useParams();
-  const project: Project = projects.filter((p) => p.id === projectId)[0];
-  const { title, description, types, data, url, notes } = project;
-
-  const navigate = useNavigate();
+  const index = projects.findIndex((p) => p.id === projectId);
+  const {
+    title,
+    description,
+    year,
+    finalYear,
+    isOngoing,
+    types,
+    data,
+    url,
+    youtube,
+    notes,
+  } = projects[index];
 
   function getProjectType(id: ProjectType) {
     return projectTypes.filter((type) => type.id === id)[0];
@@ -31,6 +41,22 @@ export default function ProjectPage() {
   function getDataType(id: DataType) {
     return dataTypes.filter((type) => type.id === id)[0];
   }
+
+  const [content, setContent] = useState<string | null>(null);
+
+  useEffect(() => {
+    import(`./contents/${projectId}.md`)
+      .then((module) =>
+        fetch(module.default)
+          .then((res) => res.text())
+          .then((md) => {
+            setContent(md);
+          })
+      )
+      .catch((err) => {
+        setContent(null);
+      });
+  });
 
   return (
     <>
@@ -44,28 +70,19 @@ export default function ProjectPage() {
         borderBottomColor="gray.200"
         mb={8}
       />
-      <Box pb={2} margin="0 auto" maxWidth="3xl">
-        <Flex direction="column" gap={8} px={4}>
-          {/* title & description */}
-          <Flex direction="column" gap={2}>
-            <IconButton
-              aria-label="Open in new tab"
-              isRound={true}
-              variant="solid"
-              fontSize="2xl"
-              size="md"
-              width="fit-content"
-              onClick={() => navigate("/")}
-              icon={<Icon as={MdArrowBack} />}
-            />
-            <Heading as="h1" size="2xl">
-              {title}
-            </Heading>
-            <Heading size="md" fontWeight={400} color="secondary">
-              {description}
-            </Heading>
-          </Flex>
-          {/* type labels */}
+      <Box pt={4} pb={8} px={2} maxWidth="3xl" margin="0 auto">
+        <Header
+          title={title}
+          year={`${year}${
+            finalYear != null
+              ? ` - ${finalYear}`
+              : isOngoing
+              ? ` - Present`
+              : ""
+          }`}
+          description={description}
+        />
+        <Flex mt={4} gap={8} direction="column">
           <Flex direction="column" gap={2}>
             <Flex
               wrap="wrap"
@@ -100,19 +117,32 @@ export default function ProjectPage() {
               ))}
             </Flex>
           </Flex>
-          {url != null && (
-            <Button
-              variant="project"
-              rightIcon={<MdOpenInNew />}
-              onClick={() => window.open(url, "_blank")}
-            >
-              Open project
-            </Button>
+          {(url != null || youtube != null) && (
+            <Flex gap={2}>
+              {url != null && (
+                <Button
+                  variant="project"
+                  rightIcon={<MdOpenInNew />}
+                  onClick={() => window.open(url, "_blank")}
+                >
+                  Open project
+                </Button>
+              )}
+              {youtube != null && (
+                <Button
+                  variant="project"
+                  rightIcon={<MdPlayCircle />}
+                  onClick={() => window.open(youtube, "_blank")}
+                >
+                  Watch demo
+                </Button>
+              )}
+            </Flex>
           )}
           {notes != null && (
             <UnorderedList>
               {notes.map((note, i) => (
-                <ListItem key={i}>
+                <ListItem key={i} fontSize="lg">
                   <span>
                     {note.action} {note.location}
                   </span>
@@ -133,7 +163,12 @@ export default function ProjectPage() {
               ))}
             </UnorderedList>
           )}
+          {content != null && <ReactMarkdown children={content} />}
         </Flex>
+        <ProjectNav
+          prevProject={index > 0 ? projects[index - 1] : null}
+          nextProject={index < projects.length - 1 ? projects[index + 1] : null}
+        />
       </Box>
     </>
   );

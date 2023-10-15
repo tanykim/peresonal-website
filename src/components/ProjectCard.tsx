@@ -11,6 +11,7 @@ import { DataType, Project, ProjectType } from "../utils/types";
 import { MdOpenInNew } from "react-icons/md";
 import { dataTypes } from "../HomePage";
 import { Link } from "react-router-dom";
+import LinkIconButton from "./LinkIconButton";
 
 export default function ProjectCard({
   id,
@@ -42,8 +43,8 @@ export default function ProjectCard({
             width="100%"
             backgroundClip="content-box"
             borderRadius={8}
-            // borderWidth="1px"
-            // borderColor="gray.200"
+            borderWidth="1px"
+            borderColor="gray.300"
             // filter="grayscale(0.95)"
             filter="blur(1px)"
             opacity={0.6}
@@ -56,7 +57,7 @@ export default function ProjectCard({
           />
         </Link>
       </Tooltip>
-      <Flex gap={2} align="center" justify="space-between">
+      <Flex gap={2} justify="space-between">
         <Flex direction="column" gap={1}>
           <Flex gap={2} align="center">
             <Heading as="h2" size="md" fontWeight={400}>
@@ -76,17 +77,7 @@ export default function ProjectCard({
             ))}
           </Flex>
         </Flex>
-        {url != null && (
-          <IconButton
-            aria-label="Open in new tab"
-            isRound={true}
-            variant="solid"
-            fontSize="lg"
-            size="sm"
-            onClick={() => window.open(url, "_blank")}
-            icon={<Icon as={MdOpenInNew} />}
-          />
-        )}
+        {url != null && <LinkIconButton url={url} />}
       </Flex>
     </Flex>
   );

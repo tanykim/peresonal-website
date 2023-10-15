@@ -6,9 +6,12 @@ export interface Project {
   title: string;
   description: string;
   year: number;
+  finalYear?: number;
+  isOngoing?: boolean;
   types: ProjectType[];
   data?: DataType[];
   url?: string;
+  youtube?: string;
   isPrivate?: boolean;
   notes?: {
     location: string;
