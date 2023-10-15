@@ -12,7 +12,7 @@ const projectButton = defineStyle({
   paddingInlineEnd: "1.25em",
   letterSpacing: "0.05em",
   _hover: {
-    background: "gray.500",
+    background: "gray.900",
   },
 });
 

@@ -21,37 +21,44 @@ export default function ProjectCard({
   url,
 }: Project) {
   return (
-    <Box>
-      <Flex gap={1} mb={1}>
-        {types.map((type: ProjectType) => (
-          <span key={type} className={`circle ${type} small`} />
-        ))}
-      </Flex>
+    <Flex direction="column" gap={2}>
+      <Tooltip
+        hasArrow
+        label={description}
+        bg="gray.700"
+        color="white"
+        fontSize="md"
+        borderRadius={4}
+        px={4}
+        py={2}
+      >
+        <Link to={id}>
+          <Box
+            backgroundImage={`url(${process.env.PUBLIC_URL}/images/${id}-sm.png)`}
+            backgroundSize="cover"
+            backgroundPosition="10% 15%"
+            height="120px"
+            width="100%"
+            backgroundClip="content-box"
+            borderWidth="1px"
+            borderColor="gray.200"
+            borderRadius={8}
+          />
+        </Link>
+      </Tooltip>
+
       <Flex gap={2} align="center">
-        <Tooltip
-          label={description}
-          placement="bottom-start"
-          bg="gray.700"
-          color="white"
-          fontSize="md"
-          borderRadius={4}
-          px={4}
-          py={2}
+        <Heading
+          as="h2"
+          size="md"
+          fontWeight={400}
+          // textDecoration="underline"
+          // textDecorationThickness={"1px"}
+          // textUnderlineOffset={"1px"}
+          // textDecorationColor="gray.300"
         >
-          <Link to={id}>
-            <Heading
-              as="h2"
-              size="md"
-              fontWeight={400}
-              textDecoration="underline"
-              textDecorationThickness={"1px"}
-              textUnderlineOffset={"1px"}
-              textDecorationColor="gray.300"
-            >
-              {title}
-            </Heading>
-          </Link>
-        </Tooltip>
+          {title}
+        </Heading>
         <Flex gap={1} color="secondary">
           {data?.map((type: DataType) => (
             <span key={type} className="material-symbols-outlined">
@@ -71,6 +78,11 @@ export default function ProjectCard({
           />
         )}
       </Flex>
-    </Box>
+      <Flex gap={1}>
+        {types.map((type: ProjectType) => (
+          <span key={type} className={`circle ${type} small`} />
+        ))}
+      </Flex>
+    </Flex>
   );
 }

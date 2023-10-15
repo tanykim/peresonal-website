@@ -159,8 +159,8 @@ export const projects: Project[] = [
     data: ["sports"],
   },
   {
-    id: "bear-match",
-    title: "Bear match",
+    id: "beer-match",
+    title: "Beer match",
     year: 2017,
     description: "Data visualization of a personal or duo's beer drinking data",
     url: "http://beer.tany.kim/",
