@@ -78,7 +78,11 @@ export default function ProjectPage() {
               borderRadius={8}
             >
               {types.map((id, i) => (
-                <ProjectTypeLabel key={id} {...getProjectType(id)} />
+                <ProjectTypeLabel
+                  key={id}
+                  {...getProjectType(id)}
+                  mr={i < types.length - 1 ? 2 : 0}
+                />
               ))}
             </Flex>
             <Flex wrap="wrap" gap={2}>

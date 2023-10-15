@@ -11,7 +11,7 @@ export default function ProjectTypeLabel({
   mr?: number;
 }) {
   return (
-    <Flex align="center" gap={2} mr={2}>
+    <Flex align="center" gap={2} mr={mr}>
       <span className={`circle ${id}`} />
       <Text>{label}</Text>
     </Flex>

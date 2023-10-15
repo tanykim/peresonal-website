@@ -17,8 +17,8 @@ export const projectTypes: { id: ProjectType; label: string }[] = [
 export const dataTypes: { id: DataType; icon: string; label: string }[] = [
   { id: "personal", icon: "favorite", label: "Personal" },
   { id: "sports", icon: "sports_baseball", label: "Sports" },
-  { id: "social", icon: "thumb_up", label: "Social" },
-  { id: "other", icon: "pet_supplies", label: "Cultural" },
+  { id: "social", icon: "thumb_up", label: "Social Media" },
+  { id: "other", icon: "pet_supplies", label: "Other" },
 ];
 
 function getMonth() {
@@ -30,44 +30,48 @@ function getMonth() {
 
 export default function Home() {
   return (
-    <Box margin="0 auto" maxWidth="4xl" my={2} p={2}>
-      <Flex wrap="wrap" gap={24}>
-        <Flex direction="column" gap={12} py={4} width="fit-content">
-          <Box>
-            <Heading as="h1" size="2xl" mb={4}>
-              Tanyoung Kim
-            </Heading>
-            <Heading size="md" fontWeight={400} color="secondary">
-              Data experience designer
-            </Heading>
-          </Box>
-          <Flex direction="column" gap={2}>
+    <Box margin="0 auto" maxWidth="6xl" p={4}>
+      <Flex direction="column" gap={24}>
+        <Box>
+          <Heading as="h1" size="2xl" mb={4}>
+            Tanyoung Kim
+          </Heading>
+          <Heading size="md" fontWeight={400} color="secondary">
+            Data experience designer
+          </Heading>
+        </Box>
+        <Box>
+          <Flex wrap="wrap" gap={2} mb={2}>
+            <Text mr={2} color="secondary">
+              Skills
+            </Text>
+            <Text color="gray.200" mr={2}>
+              |
+            </Text>
             {projectTypes.map((type, i) => (
-              <React.Fragment key={i}>
-                <ProjectTypeLabel {...type} />
-                {type.id === "vis" && (
-                  <Flex ml={6} mt={-1} gap={2} wrap="wrap" color="secondary">
-                    {dataTypes.map((type, j) => (
-                      <DataTypeLabel
-                        key={type.id}
-                        {...type}
-                        mr={j < dataTypes.length - 1 ? 2 : 0}
-                      />
-                    ))}
-                  </Flex>
-                )}
-              </React.Fragment>
+              <ProjectTypeLabel key={i} {...type} mr={2} />
             ))}
           </Flex>
-          <Text color="secondary">Last updated in {getMonth()}</Text>
-        </Flex>
-        <Flex direction="column" gap={8} py={4}>
+          <Flex wrap="wrap" gap={2}>
+            <Text mr={2} color="secondary">
+              Data
+            </Text>
+            <Text color="gray.200" mr={2}>
+              |
+            </Text>
+            {dataTypes.map((type, j) => (
+              <DataTypeLabel key={type.id} {...type} mr={2} />
+            ))}
+          </Flex>
+        </Box>
+        <Flex gap={16} wrap="wrap">
           {projects
             .filter((project) => !project.isPrivate)
             .map((project) => (
               <ProjectCard key={project.id} {...project} />
             ))}
         </Flex>
+        <Text color="secondary">Last updated in {getMonth()}</Text>
       </Flex>
     </Box>
   );

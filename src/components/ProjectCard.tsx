@@ -21,7 +21,7 @@ export default function ProjectCard({
   url,
 }: Project) {
   return (
-    <Flex direction="column" gap={2}>
+    <Flex direction="column" gap={4} minWidth="xs">
       <Tooltip
         hasArrow
         label={description}
@@ -31,6 +31,7 @@ export default function ProjectCard({
         borderRadius={4}
         px={4}
         py={2}
+        placement="top"
       >
         <Link to={id}>
           <Box
@@ -40,31 +41,40 @@ export default function ProjectCard({
             height="120px"
             width="100%"
             backgroundClip="content-box"
-            borderWidth="1px"
-            borderColor="gray.200"
             borderRadius={8}
+            // borderWidth="1px"
+            // borderColor="gray.200"
+            // filter="grayscale(0.95)"
+            filter="blur(1px)"
+            opacity={0.6}
+            _hover={{
+              filter: "none",
+              opacity: "1",
+              borderWidth: "2px",
+              borderColor: "gray.100",
+            }}
           />
         </Link>
       </Tooltip>
-
-      <Flex gap={2} align="center">
-        <Heading
-          as="h2"
-          size="md"
-          fontWeight={400}
-          // textDecoration="underline"
-          // textDecorationThickness={"1px"}
-          // textUnderlineOffset={"1px"}
-          // textDecorationColor="gray.300"
-        >
-          {title}
-        </Heading>
-        <Flex gap={1} color="secondary">
-          {data?.map((type: DataType) => (
-            <span key={type} className="material-symbols-outlined">
-              {dataTypes.filter((d) => d.id === type)[0].icon}
-            </span>
-          ))}
+      <Flex gap={2} align="center" justify="space-between">
+        <Flex direction="column" gap={1}>
+          <Flex gap={2} align="center">
+            <Heading as="h2" size="md" fontWeight={400}>
+              {title}
+            </Heading>
+            <Flex gap={1}>
+              {types.map((type: ProjectType) => (
+                <span key={type} className={`circle ${type} small`} />
+              ))}
+            </Flex>
+          </Flex>
+          <Flex gap={1} color="secondary">
+            {data?.map((type: DataType) => (
+              <span key={type} className="material-symbols-outlined">
+                {dataTypes.filter((d) => d.id === type)[0].icon}
+              </span>
+            ))}
+          </Flex>
         </Flex>
         {url != null && (
           <IconButton
@@ -77,11 +87,6 @@ export default function ProjectCard({
             icon={<Icon as={MdOpenInNew} />}
           />
         )}
-      </Flex>
-      <Flex gap={1}>
-        {types.map((type: ProjectType) => (
-          <span key={type} className={`circle ${type} small`} />
-        ))}
       </Flex>
     </Flex>
   );

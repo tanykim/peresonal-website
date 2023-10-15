@@ -37,6 +37,7 @@ export const projects: Project[] = [
     description: "Crafting new areas where knitting meets coding",
     url: "https://knitting.tany.kim/",
     types: ["product", "eng"],
+    data: ["other"],
     notes: [
       {
         location: "Ravelry",
@@ -53,6 +54,7 @@ export const projects: Project[] = [
     description: "Workout plan app for master swimmers in two minutes",
     url: "https://tanykim.github.io/master-swim-workout",
     types: ["product", "eng"],
+    data: ["sports"],
   },
   {
     id: "shades-of-exercise",
@@ -218,6 +220,7 @@ export const projects: Project[] = [
     description:
       "Ph.D. dissertation on the rhetoric and aesthetics of data-based cultural interface",
     types: ["research"],
+    data: ["social", "other"],
     notes: [
       {
         location: "Ph.D. dissertation",
