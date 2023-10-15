@@ -1,10 +1,10 @@
 import React from "react";
 import type { DataType, ProjectType } from "./utils/types";
-import { Box, Flex, Text, Heading, Icon, IconButton } from "@chakra-ui/react";
+import { Box, Flex, Text, Heading } from "@chakra-ui/react";
 import { projects } from "./projects";
-import { MdOpenInNew } from "react-icons/md";
-import Project from "./ProjectPage";
 import ProjectCard from "./components/ProjectCard";
+import ProjectTypeLabel from "./components/ProjectTypeLabel";
+import DataTypeLabel from "./components/DataTypeLabel";
 
 export const projectTypes: { id: ProjectType; label: string }[] = [
   { id: "vis", label: "Data visualization" },
@@ -30,54 +30,45 @@ function getMonth() {
 
 export default function Home() {
   return (
-    <Flex
-      width="100%"
-      minHeight="100vh"
-      justify="center"
-      gap={24}
-      align="center"
-      wrap="wrap"
-    >
-      <Flex direction="column" gap={12}>
-        <Box>
-          <Heading as="h1" size="2xl" mb={4}>
-            Tanyoung Kim
-          </Heading>
-          <Text fontSize="2xl" color="secondary">
-            Data experience designer
-          </Text>
-        </Box>
-        <Flex direction="column" gap={3}>
-          {projectTypes.map((type) => (
-            <React.Fragment key={type.id}>
-              <Flex align="center" gap={3}>
-                <span className={`circle ${type.id}`} />
-                <Text>{type.label}</Text>
-              </Flex>
-              {type.id === "vis" && (
-                <Flex ml={6} mt={-1} gap={4} wrap="wrap" color="secondary">
-                  {dataTypes.map((type) => (
-                    <Flex key={type.id} align="center" gap={1}>
-                      <span className="material-symbols-outlined">
-                        {type.icon}
-                      </span>
-                      <Text>{type.label}</Text>
-                    </Flex>
-                  ))}
-                </Flex>
-              )}
-            </React.Fragment>
-          ))}
+    <Box margin="0 auto" maxWidth="4xl" my={2} p={2}>
+      <Flex wrap="wrap" gap={24}>
+        <Flex direction="column" gap={12} py={4} width="fit-content">
+          <Box>
+            <Heading as="h1" size="2xl" mb={4}>
+              Tanyoung Kim
+            </Heading>
+            <Heading size="md" fontWeight={400} color="secondary">
+              Data experience designer
+            </Heading>
+          </Box>
+          <Flex direction="column" gap={2}>
+            {projectTypes.map((type, i) => (
+              <React.Fragment key={i}>
+                <ProjectTypeLabel {...type} />
+                {type.id === "vis" && (
+                  <Flex ml={6} mt={-1} gap={2} wrap="wrap" color="secondary">
+                    {dataTypes.map((type, j) => (
+                      <DataTypeLabel
+                        key={type.id}
+                        {...type}
+                        mr={j < dataTypes.length - 1 ? 2 : 0}
+                      />
+                    ))}
+                  </Flex>
+                )}
+              </React.Fragment>
+            ))}
+          </Flex>
+          <Text color="secondary">Last updated in {getMonth()}</Text>
         </Flex>
-        <Text color="secondary">Last updated in {getMonth()}</Text>
+        <Flex direction="column" gap={8} py={4}>
+          {projects
+            .filter((project) => !project.isPrivate)
+            .map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+        </Flex>
       </Flex>
-      <Flex direction="column" gap={8}>
-        {projects
-          .filter((project) => !project.isPrivate)
-          .map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
-      </Flex>
-    </Flex>
+    </Box>
   );
 }

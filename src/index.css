@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Lora:wght@400;500;600&display=swap');
 
 :root {
     --color-vis: #00b4d8;
@@ -6,6 +6,8 @@
     --color-eng: #b23a48;
     --color-analytics: #344e41;
     --color-research: #9f86c0;
+    --body-font: "'Lora', -apple-system, BlinkMacSystemFont, sans-serif",
+
 }
 
 .circle {

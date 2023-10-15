@@ -14,10 +14,21 @@ export const projects: Project[] = [
     id: "best-bookshelf",
     title: "Best bookshelf",
     year: 2017,
-    description: "Crafting new areas where knitting meets coding",
+    description:
+      "Data visualization of yearly best books by the New York Times",
     url: "https://projects.tany.kim/best-bookshelf/",
     types: ["vis", "eng"],
     data: ["other"],
+    notes: [
+      {
+        location: "Medium",
+        action: "Read",
+        type: "post",
+        links: [
+          "https://medium.com/@tanykim/best-bookshelf-data-visualization-adapting-real-world-objects-with-d3-js-ca420b5d79cc",
+        ],
+      },
+    ],
   },
   {
     id: "interactive-knitting-patterns",
@@ -26,6 +37,14 @@ export const projects: Project[] = [
     description: "Crafting new areas where knitting meets coding",
     url: "https://knitting.tany.kim/",
     types: ["product", "eng"],
+    notes: [
+      {
+        location: "Ravelry",
+        action: "Check out",
+        type: "profile",
+        links: ["https://www.ravelry.com/designers/tanyoung-kim"],
+      },
+    ],
   },
   {
     id: "master-swim-workout",
@@ -51,6 +70,14 @@ export const projects: Project[] = [
     description: "Data visualization of sports fans's behavior on social media",
     types: ["vis", "eng", "analytics", "research"],
     data: ["sports", "social"],
+    notes: [
+      {
+        location: "VIS 2017",
+        action: "Read",
+        type: "poster paper",
+        links: ["http://tany.kim/files/shared_fans_cameraReady.pdf"],
+      },
+    ],
   },
   {
     id: "swimmers-history",
@@ -61,6 +88,18 @@ export const projects: Project[] = [
     url: "http://tany.kim/swimmers-history/",
     types: ["vis", "eng"],
     data: ["sports"],
+    notes: [
+      {
+        location: "Medium",
+        action: "Read",
+        type: "post",
+        links: [
+          "https://medium.com/@tanykim/data-visualization-of-elite-swimmers-competition-results-part-1-datasets-bd09b68154c2",
+          "https://medium.com/@tanykim/data-visualization-of-elite-swimmers-competition-results-part-2-design-dc86d77946b8",
+          "https://medium.com/@tanykim/data-visualization-of-elite-swimmers-competition-results-part-3-insights-7ec5862f48a7",
+        ],
+      },
+    ],
   },
   {
     id: "10-years-of-twitter",
@@ -70,6 +109,16 @@ export const projects: Project[] = [
     url: "http://tany.kim/twitter",
     types: ["vis", "eng", "analytics"],
     data: ["personal", "social"],
+    notes: [
+      {
+        location: "Medium",
+        action: "Read",
+        type: "post",
+        links: [
+          "https://medium.com/@tanykim/side-project-10-years-of-twitter-8fd5724f7b1a",
+        ],
+      },
+    ],
   },
   {
     id: "quantify-your-year",
@@ -88,6 +137,16 @@ export const projects: Project[] = [
     url: "http://tany.kim/julie-and-julia/",
     types: ["vis", "eng", "analytics"],
     data: ["other"],
+    notes: [
+      {
+        location: "Medium",
+        action: "Read",
+        type: "post",
+        links: [
+          "https://medium.com/@tanykim/julie-julia-film-script-search-and-text-visualization-f4e32273a65c",
+        ],
+      },
+    ],
   },
   {
     id: "team-usa",
@@ -107,6 +166,14 @@ export const projects: Project[] = [
     url: "http://beer.tany.kim/",
     types: ["vis", "eng", "analytics", "research"],
     data: ["personal", "social"],
+    notes: [
+      {
+        location: "VIS 2016",
+        action: "Read",
+        type: "poster paper",
+        links: ["http://tany.kim/files/beer_cameraReady.pdf"],
+      },
+    ],
   },
   {
     id: "road-to-masterpiece",
@@ -121,11 +188,19 @@ export const projects: Project[] = [
   {
     id: "commute",
     title: "Commute",
-    year: 2015,
+    year: 2014,
     description:
       "Data visualization of commuting patterns collected via a location tracking app",
     types: ["vis", "eng", "analytics", "research"],
     data: ["personal"],
+    notes: [
+      {
+        location: "VIS 2015",
+        action: "Read",
+        type: "poster paper",
+        links: ["http://tany.kim/papers/commute_cameraReady.pdf"],
+      },
+    ],
   },
   {
     id: "very-personal-film-logs",
@@ -143,5 +218,13 @@ export const projects: Project[] = [
     description:
       "Ph.D. dissertation on the rhetoric and aesthetics of data-based cultural interface",
     types: ["research"],
+    notes: [
+      {
+        location: "Ph.D. dissertation",
+        action: "Download",
+        type: "here",
+        links: ["http://tany.kim/files/tanykim_dissertation.pdf"],
+      },
+    ],
   },
 ];

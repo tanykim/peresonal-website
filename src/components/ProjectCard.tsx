@@ -41,8 +41,8 @@ export default function ProjectCard({
           <Link to={id}>
             <Heading
               as="h2"
-              fontWeight={500}
               size="md"
+              fontWeight={400}
               textDecoration="underline"
               textDecorationThickness={"1px"}
               textUnderlineOffset={"1px"}

@@ -10,4 +10,10 @@ export interface Project {
   data?: DataType[];
   url?: string;
   isPrivate?: boolean;
+  notes?: {
+    location: string;
+    action: string;
+    type: string;
+    links: string[];
+  }[];
 }
