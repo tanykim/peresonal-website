@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmaster_swim_workout=self.webpackChunkmaster_swim_workout||[]).push([[595],{595:function(t,e,s){t.exports=s.p+"static/media/interactive-knitting-patterns.50e27c931826fa0e5266.md"}}]);
