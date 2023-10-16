@@ -1,18 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.3856011c.css",
-    "main.js": "/static/js/main.85e31ba8.js",
+    "main.js": "/static/js/main.81ac8809.js",
     "static/js/595.c82926ce.chunk.js": "/static/js/595.c82926ce.chunk.js",
+    "static/js/868.55bb8c7a.chunk.js": "/static/js/868.55bb8c7a.chunk.js",
+    "static/js/954.f6399d1f.chunk.js": "/static/js/954.f6399d1f.chunk.js",
     "static/js/787.ddd09449.chunk.js": "/static/js/787.ddd09449.chunk.js",
     "static/media/interactive-knitting-patterns.md": "/static/media/interactive-knitting-patterns.50e27c931826fa0e5266.md",
+    "static/media/quantify-your-year.md": "/static/media/quantify-your-year.39acbf48bd168d666bc3.md",
+    "static/media/shades-of-exercise.md": "/static/media/shades-of-exercise.d705a3642e24e353900b.md",
     "static/media/about-me.md": "/static/media/about-me.2551231874ac33dd8fd0.md",
     "index.html": "/index.html",
     "main.3856011c.css.map": "/static/css/main.3856011c.css.map",
-    "main.85e31ba8.js.map": "/static/js/main.85e31ba8.js.map",
+    "main.81ac8809.js.map": "/static/js/main.81ac8809.js.map",
     "787.ddd09449.chunk.js.map": "/static/js/787.ddd09449.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3856011c.css",
-    "static/js/main.85e31ba8.js"
+    "static/js/main.81ac8809.js"
   ]
 }

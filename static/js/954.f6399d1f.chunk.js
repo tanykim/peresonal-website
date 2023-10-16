@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmaster_swim_workout=self.webpackChunkmaster_swim_workout||[]).push([[954],{954:function(e,s,t){e.exports=t.p+"static/media/shades-of-exercise.d705a3642e24e353900b.md"}}]);

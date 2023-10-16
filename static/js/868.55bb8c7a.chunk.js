@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmaster_swim_workout=self.webpackChunkmaster_swim_workout||[]).push([[868],{868:function(s,t,e){s.exports=e.p+"static/media/quantify-your-year.39acbf48bd168d666bc3.md"}}]);
